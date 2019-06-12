@@ -1,15 +1,16 @@
 (function () {
     'use strict';
 
-    angular.module('scrumboard.demo')
-        .directive('scrumboardCard', CardDirective);
+    angular.module('scrumboard.demo') //retrieve the module object
+        .directive('scrumboardCard', CardDirective);//call this method on module object
 
     function CardDirective() {
         return {
-            templateUrl: '/static/html/card.html',
-            restrict: 'E',
+            templateUrl: '/static/html/card.html', //binds the HTML
+            restrict: 'E', //Element
             controller: ['$scope', '$http', function ($scope, $http) {
                var url = '/scrumboard/cards/' + $scope.card.id + '/';
+
                $scope.destList = $scope.list;
 
                $scope.update = function () {
@@ -26,7 +27,7 @@
                         1
                     );
                 }
-
+//remove card from the list
                 $scope.delete = function () {
                     $http.delete(url).then(
                         function(){
@@ -35,11 +36,11 @@
                     );
                 };
 
-                $scope.modelOptions = {
+                $scope.modelOptions = { //use the delete function once
                     debounce: 500
                 };
 
-
+//Move the selected card to the new DesList
                 $scope.move = function () {
                     if ($scope.destList === undefined) {
                         return;

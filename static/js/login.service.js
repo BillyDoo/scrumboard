@@ -18,11 +18,12 @@
                 });
         }
 
+        //start session
         function isLoggedIn () {
             return !!localStorage.currentUser;
         }
 
-
+//end session redirect to Login page
         function logout () {
             delete localStorage.currentUser;
             $http.get('/auth_api/logout/').then(function(){
@@ -34,6 +35,6 @@
             if (!isLoggedIn()) {
                 $location.url('/login');
             }
-        }
+        };
     }
 })();

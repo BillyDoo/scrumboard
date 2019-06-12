@@ -7,7 +7,7 @@
 
     function config($routeProvider) {
 
-        $routeProvider
+        $routeProvider //route the correct url to the browser
             .when('/', {
                 templateUrl: '/static/html/scrumboard.html',
                 controller: 'ScrumboardController'
@@ -20,7 +20,7 @@
     }
 
 
-    function run($http) {
+    function run($http) {           //Handle the CSRF cookie
         $http.defaults.xsrfHeaderName = 'X-CSRFToken';
         $http.defaults.xsrfCookieName = 'csrftoken';
     };

@@ -1,10 +1,10 @@
 <div class="logout">
-    <button ng-click="logout()">Logout</button>
+    <button class="button1" ng-click="logout()">Logout</button>
 </div>
-<div class="list" ng-repeat="list in data">
+<div class="list" ng-repeat="list in data">  <!-- loop over scope_data to retrieve the lists -->
     <h3>{{ list.name }}</h3>
 
-    <span class="show-filters">
+    <span class="show-filters">             <!-- filtering -->
         <button ng-click="showFilters=!showFilters">
             {{ showFilters ? "Hide" : "Show" }} filters
         </button>
@@ -17,7 +17,7 @@
             <tr>
                 <td><label>Sort:</label></td>
                 <td>
-                    <select ng-model="sortBy">
+                    <select ng-model="sortBy"> <!-- Bind the input to sort the cards -->
                         <option value="title">Title</option>
                     </select>
 
@@ -35,12 +35,14 @@
         <hr>
     </div>
     <ul>
-        <li ng-repeat="card in list.cards | filter:filterBy | orderBy:sortBy:reverse">
-            <scrumboard-card></scrumboard-card>
+        <li ng-repeat="card in list.cards | filter:filterBy | orderBy:sortBy:reverse"> <!-- loop over cards filtered in each list-->
+            <scrumboard-card></scrumboard-card> <!-- Contains the template -->
         </li>
     </ul>
+    <!-- Insert new title -->
     <div class="flex">
         <input type="text" ng-model="new_title"/>
         <button ng-click="add(list, new_title)">+</button>
+
     </div>
 </div>

@@ -9,7 +9,6 @@
         $scope.add = function (list, title) {
             var card = {
                 list: list.id,
-                owner: Login.currentUser().id,
                 title: title
             };
 
