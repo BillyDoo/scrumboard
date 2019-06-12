@@ -1,9 +1,10 @@
 from rest_framework import serializers
 
 from .models import List, Card
-#
 
-class CardSerializer(serializers.ModelSerializer):
+#Encode Python objects as JSON
+
+class CardSerializer(serializers.ModelSerializer):#generate JSON
 
     class Meta:
         model = Card

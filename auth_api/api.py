@@ -10,9 +10,9 @@ from .serializers import UserSerializer
 
 class LoginView(views.APIView):
 
-    @method_decorator(csrf_protect)
+    @method_decorator(csrf_protect) #always check the csrf protection
     def post(self, request):
-        user = authenticate(
+        user = authenticate(       #check the credentails and return User
             username=request.data.get("username"),
             password=request.data.get("password"))
 
@@ -22,7 +22,7 @@ class LoginView(views.APIView):
                 'message': 'Username or password incorrect'
             }, status=status.HTTP_401_UNAUTHORIZED)
 
-        login(request, user)
+        login(request, user) #create the session
         return Response(UserSerializer(user).data)
 
 

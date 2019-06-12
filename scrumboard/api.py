@@ -6,9 +6,9 @@ from .serializers import ListSerializer, CardSerializer
 
 
 class ListViewSet(ModelViewSet):
-    queryset = List.objects.all()
-    serializer_class = ListSerializer
-    permission_classes = (permissions.IsAuthenticated,)
+    queryset = List.objects.all() #retrieve all the objects for the db
+    serializer_class = ListSerializer #convert the data into JSON
+    permission_classes = (permissions.IsAuthenticated,)#permit the user to access the URLs
 
 
 class CardViewSet(ModelViewSet):
